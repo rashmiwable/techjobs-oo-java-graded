@@ -80,14 +80,14 @@ public class JobTest {
         //String newLine = System.getProperty("line.separator");
         String newLine = "\n";
 
-        /*String expected = newLine + "ID:1" + newLine + "Name: Data not available" + newLine +
+        String expected = newLine + "ID:" + j1.getId() + newLine + "Name: Data not available" + newLine +
                 "Employer: ACME" + newLine +
                 "Location: Desert" + newLine +
                 "Position Type: Quality control" + newLine +
-                "Core Competency: Persistence" + newLine;*/
+                "Core Competency: Persistence" + newLine;
 
-        Assert.assertNotEquals(actual.indexOf("Name: Data not available"), -1);
-        //Assert.assertEquals(expected, actual);
+         Assert.assertEquals(expected, actual);
+
     }
 
     @Test
