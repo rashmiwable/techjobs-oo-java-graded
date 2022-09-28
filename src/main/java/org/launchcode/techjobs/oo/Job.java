@@ -47,7 +47,58 @@ public class Job {
         return Objects.hash(getId());
     }
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+    @Override
+    public String toString() {
+
+        String newLine = "\n"; //System.getProperty("line.separator");
+        String errorMessage = "Data not available";
+        String ret = "";
+
+        if (this.employer == null &&
+            this.location == null &&
+            this.coreCompetency == null &&
+            this.positionType == null &&
+            this.id != 0 ) {
+
+            ret = "OOPS! This job does not seem to exist.";
+        }
+        else {
+            ret = ret + newLine + "ID:" + this.id + newLine;
+
+            if (this.name == null || this.name == "") {
+                ret = ret + "Name: " + errorMessage + newLine;
+            } else {
+                ret = ret + "Name: " + this.name + newLine;
+            }
+            if (this.employer == null) {
+                ret = ret + "Employer: " +  errorMessage + newLine;
+            } else {
+                ret = ret + "Employer: " + this.employer + newLine;
+            }
+            if (this.location == null) {
+                ret = ret + "Location: " + errorMessage + newLine;
+            } else {
+                ret = ret + "Location: " + this.location + newLine;
+            }
+            if (this.positionType == null) {
+                ret = ret + "Position Type: " + errorMessage + newLine;
+            } else {
+                ret = ret + "Position Type: " + this.positionType + newLine;
+            }
+            if (this.coreCompetency == null) {
+                ret = ret + "Core Competency: " + errorMessage + newLine;
+            } else {
+                ret = ret + "Core Competency: " + this.coreCompetency;
+            }
+
+            ret = ret + newLine;
+        }
+
+        return ret;
+
+    }
+
+   // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
 
     public int getId() {

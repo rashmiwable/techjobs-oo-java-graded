@@ -51,5 +51,55 @@ public class JobTest {
         Assert.assertFalse(j1.equals(j2));
     }
 
+    @Test
+    public void testToStringContainsCorrectLabelsAndData (){
+
+        Job j1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String actual =  j1.toString();
+
+        //String newLine = System.getProperty("line.separator");
+        String newLine = "\n";
+
+        String expected = newLine + "ID:1" + newLine + "Name: Product tester" + newLine +
+                "Employer: ACME" + newLine +
+                "Location: Desert" + newLine +
+                "Position Type: Quality control" + newLine +
+                "Core Competency: Persistence" + newLine;
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField (){
+
+        Job j1 = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String actual =  j1.toString();
+
+        //String newLine = System.getProperty("line.separator");
+        String newLine = "\n";
+
+        String expected = newLine + "ID:1" + newLine + "Name: Data not available" + newLine +
+                "Employer: ACME" + newLine +
+                "Location: Desert" + newLine +
+                "Position Type: Quality control" + newLine +
+                "Core Competency: Persistence" + newLine;
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testToStringStartsAndEndsWithNewLine (){
+           Job j1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+           String actual =  j1.toString();
+
+           String newLine = "\n" ;//System.getProperty("line.separator");
+
+          String expected = "\n";
+
+         Assert.assertEquals('\n', actual.charAt(0)  );
+         Assert.assertEquals('\n', actual.charAt(actual.length()-1)  );
+    }
 }
 
